@@ -10,9 +10,13 @@ import java.util.List;
 public interface PostSerInt {
 
      List<Post> findAll();
-     public PostDto findById(Long id);
+
+     public Post findById(Long id);
+
      Post save(Post post);
+
      public void DeleteById(Long id);
+
      public Post UpdateById(Long id , Post post);
 
 

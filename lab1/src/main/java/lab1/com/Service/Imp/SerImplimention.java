@@ -8,6 +8,7 @@ import lab1.com.Service.PostSerInt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -26,24 +27,24 @@ public class SerImplimention implements PostSerInt {
     }
 
     @Override
-    public PostDto findById(Long id) {
-        return repostoryDto.findById(id).orElse(null);
+    public Post findById(Long id) {
+        return repostory.findById(id).orElse(null);
     }
 
     @Override
-    public Post save(@RequestBody  Post post) {
+    public Post save(Post post) {
         return repostory.save(post);
     }
 
     @Override
     public void DeleteById(Long id) {
-        repostory.deleteById(id);
-
+    repostory.deleteById(id);
     }
 
     @Override
-    public Post UpdateById(Long id , Post post) {
+    public Post UpdateById(Long id, Post post) {
+        Post po = repostory.findById(id).orElse(null);
+        return repostory.save(post);
 
-    return repostory.save(post);
     }
 }
