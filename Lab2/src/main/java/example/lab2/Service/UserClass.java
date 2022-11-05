@@ -45,4 +45,9 @@ public class UserClass implements UserInterface {
         var temp2= temp.getPosts();
         return temp2;
     }
+
+    @Override
+    public void deleteViaId(Long id) {
+        userRepository.deleteById(id);
+    }
 }

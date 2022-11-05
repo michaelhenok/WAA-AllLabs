@@ -1,5 +1,6 @@
 package example.lab2.Controller;
 
+import example.lab2.Model.Comment;
 import example.lab2.Model.Post;
 import example.lab2.Model.User;
 import example.lab2.Service.UserClass;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/users")
 public class UserController {
 
 
@@ -18,16 +19,21 @@ public class UserController {
     public UserController(UserClass aClass) {
         this.aClass = aClass;
     }
+    private CommentController commentClass;
 
-    @GetMapping("/users")
+    public UserController(CommentController commentClass) {
+        this.commentClass = commentClass;
+    }
+
+    @GetMapping("/")
     public List<User> getAllUsers(){
     return  aClass.getAll();
 }
-    @GetMapping("/users/{id}")
+    @GetMapping("/{id}")
     public User getUserById(@PathVariable Long id){
         return  aClass.findviaId(id);
     }
-    @PostMapping("/users")
+    @PostMapping("/")
     public void addNewUsers(@RequestBody User user){
         aClass.savenew(user);
     }
@@ -35,5 +41,8 @@ public class UserController {
     public List<Post> userWithid(@PathVariable Long id ){
         return  aClass.findviaById(id);
     }
+
+
+
 
 }

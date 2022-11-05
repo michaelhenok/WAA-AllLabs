@@ -2,7 +2,6 @@ package example.lab2.Controller;
 
 
 import example.lab2.Model.Post;
-import example.lab2.Model.User;
 import example.lab2.Service.PostClass;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,12 +13,12 @@ import java.util.List;
 public class PostController {
 
     private PostClass aClass;
-
+    @Autowired
     public PostController(PostClass aClass) {
         this.aClass = aClass;
     }
 
-    @Autowired
+
 
 
     @GetMapping("/posts")

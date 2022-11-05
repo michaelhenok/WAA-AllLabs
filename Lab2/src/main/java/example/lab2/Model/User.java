@@ -1,8 +1,12 @@
 package example.lab2.Model;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@ToString
+
 public class User {
 
 
@@ -13,7 +17,7 @@ public class User {
 
     String name;
 
-    @OneToMany(cascade = CascadeType.ALL )
+    @OneToMany(cascade = CascadeType.ALL , mappedBy = "user")
             @JoinColumn(name = "User_id")
     List<Post> posts;
 

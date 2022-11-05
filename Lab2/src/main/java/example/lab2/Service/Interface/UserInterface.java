@@ -14,4 +14,5 @@ public interface UserInterface {
     public User findviaId(Long id);
     User savenew(User user);
     List<Post> findviaById (Long id);
+    public void deleteViaId(Long id);
 }
